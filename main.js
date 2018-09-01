@@ -31,7 +31,16 @@ let acmeJsonPath = argv._[0] || ".";
 
 let domains = [];
 
-(argv.d||[]).forEach(domain => {
+let domainArgs = [];
+
+if(Array.isArray(argv.d)){
+    domainArgs = argv.d;
+}
+else if(typeof argv.d === typeof "aa"){
+    domainArgs = [argv.d]
+}
+
+(domainArgs).forEach(domain => {
    if(domain.match(/,/i)){
        domain.split(",").forEach(d => domains.push(d));
    }

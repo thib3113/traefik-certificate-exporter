@@ -132,7 +132,7 @@ var TraefikCertificateExporter = function () {
                                                             //check if name is in domain
 
                                                             if (!(domains.length < 1 || domains.find(function (domain) {
-                                                                return name === domain || (0, _minimatch2.default)(name, domain) || sans.find(function (san) {
+                                                                return name === domain || (0, _minimatch2.default)(name, domain) || sans && sans.find(function (san) {
                                                                     return san === domain || (0, _minimatch2.default)(san, domain);
                                                                 }) !== undefined;
                                                             }))) {

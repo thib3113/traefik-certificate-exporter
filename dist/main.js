@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 "use strict";
 
+var _typeof2 = require("babel-runtime/helpers/typeof");
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
 var _yargs = require("yargs");
 
 var _yargs2 = _interopRequireDefault(_yargs);
@@ -30,7 +34,15 @@ var acmeJsonPath = argv._[0] || ".";
 
 var domains = [];
 
-(argv.d || []).forEach(function (domain) {
+var domainArgs = [];
+
+if (Array.isArray(argv.d)) {
+    domainArgs = argv.d;
+} else if ((0, _typeof3.default)(argv.d) === (0, _typeof3.default)("aa")) {
+    domainArgs = [argv.d];
+}
+
+domainArgs.forEach(function (domain) {
     if (domain.match(/,/i)) {
         domain.split(",").forEach(function (d) {
             return domains.push(d);
