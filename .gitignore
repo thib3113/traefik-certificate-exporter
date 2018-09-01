@@ -217,5 +217,3 @@ $RECYCLE.BIN/
 /certs/
 
 !.gitkeep
-
-dist/
