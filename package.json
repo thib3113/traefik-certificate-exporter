@@ -1,12 +1,17 @@
 {
   "name": "traefik-certificate-exporter",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node %NODE_DEBUG_OPTION% -r babel-register main.js"
+    "dev": "node %NODE_DEBUG_OPTION% -r babel-register main.js -o ./tests/certs",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
   },
+  "bin": {
+    "traefik-certificate-exporter": "./dist/main.js"
+  },
+  "preferGlobal": true,
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -24,6 +29,7 @@
     "babel-plugin-transform-es2015-parameters": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "rimraf": "^2.6.2"
   }
 }

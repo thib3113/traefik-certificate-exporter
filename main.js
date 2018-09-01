@@ -13,7 +13,8 @@ let argv = yargs
     })
     .option('output-folder', {
         describe: "specify the folder where the certs are exported",
-        alias: "o"
+        alias: "o",
+        default:""
     })
     .option('folder-structure', {
         describe: "folder structure (1 = no folders, 2 = structured by main domain, 3 = 1+2)",
@@ -45,4 +46,4 @@ let exporter = new TraefikCertificateExporter({
 });
 
 // noinspection JSIgnoredPromiseFromCall
-exporter.export(domains);
+exporter.export(domains, argv.o);
